@@ -56,7 +56,7 @@
                 <input type="text" v-model="search" placeholder="" required />
                 <div class="search-icon"></div>
             </div>
-            <Button color="red" class="btn-close" @click="closePage()"> Close </Button>
+            <Button color="red" class="btn-close" @click="closePage()"> schließen </Button>
         </div>
     </div>
 </template>
@@ -91,7 +91,7 @@ export default defineComponent({
     data() {
         return {
             shopType: 'buy',
-            buttonText: 'Buy me!',
+            buttonText: 'Kaufen!',
             buttonColor: 'green',
             search: '',
             selectedAmount: [],
@@ -150,11 +150,11 @@ export default defineComponent({
                 AcceptsCard: acceptsCard,
             };
             if (type === 'sell') {
-                this.buttonText = 'Sell';
+                this.buttonText = 'Verkaufen';
                 this.buttonColor = 'red';
                 this.shopType = 'sell';
             } else {
-                this.buttonText = 'Buy me!';
+                this.buttonText = 'Kaufen';
                 this.buttonColor = 'green';
                 this.shopType = 'buy';
             }

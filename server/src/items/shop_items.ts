@@ -12,7 +12,10 @@ export const sellingShops: Array<{ dbName: string; price: number }> = [
     { dbName: 'shop-bread', price: 25 },
 ];
 
-export const ltdShops: Array<{ dbName: string; price: number }> = [{ dbName: 'shop-water', price: 250 }];
+export const ltdShops: Array<{ dbName: string; price: number }> = [
+    { dbName: 'shop-water', price: 250 },
+    { dbName: 'OS-Farming-Fishing-Rod', price: 1500 }
+];
 
 export const robsLiquorShops: Array<{ dbName: string; price: number }> = [{ dbName: 'shop-beer', price: 330 }];
 
@@ -40,4 +43,10 @@ export const bahamaMamasShops: Array<{ dbName: string; price: number }> = [{ dbN
 
 export const vanillaUnicornShops: Array<{ dbName: string; price: number }> = [{ dbName: 'shop-beer', price: 425 }];
 
-export const toolShops: Array<{ dbName: string; price: number }> = [{ dbName: 'shop-water', price: 250 }];
+export const toolShops: Array<{ dbName: string; price: number }> = [
+    { dbName: 'shop-water', price: 250 },
+    { dbName: 'OS-Farming-Drill', price: 250 },
+    { dbName: 'OS-Farming-Garden-Shears', price: 250 },
+    { dbName: 'OS-Farming-Axe', price: 250 },
+
+];

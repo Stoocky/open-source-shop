@@ -1,5 +1,5 @@
 export const enum ShopTranslations {
-    openShop = 'Open Shop',
-    openSellingShop = 'Open Shop',
-    notEnoughFunds = 'Not enough funds!',
+    openShop = 'Geschäft Öffnen',
+    openSellingShop = 'Verkaufsladen Öffnen',
+    notEnoughFunds = 'nicht genug Geld!',
 }

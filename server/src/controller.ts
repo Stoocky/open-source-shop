@@ -8,6 +8,8 @@ import { IShop } from '@AthenaPlugins/open-source-shop/shared/interfaces/IShop';
 import { IShopLocation } from '@AthenaPlugins/open-source-shop/shared/interfaces/IShopLocation';
 import { shopConfig } from './config';
 import { ShopTranslations } from '@AthenaPlugins/open-source-shop/shared/enums/Translations';
+import { VitalsSystem } from '@AthenaPlugins/athena-plugin-food-water/server/src/system';
+import { VITAL_NAMES } from '@AthenaPlugins/athena-plugin-food-water/shared/enums';
 
 export async function loadShops() {
     ShopRegistry.forEach(async (shop) => {
@@ -27,7 +29,7 @@ export async function loadShops() {
                     pos: new alt.Vector3(location.x, location.y, location.z),
                     shortRange: shop.data.blip.shortRange,
                     sprite: shop.data.blip.sprite,
-                    color: shop.data.blip.sprite,
+                    color: shop.data.blip.color,
                     text: shop.name,
                     scale: shop.data.blip.scale,
                     uid: `OSS-Shop-${shop.name}-${i}`,
@@ -88,7 +90,10 @@ export function foodEffect(player: alt.Player, slot: number, type: 'inventory' |
     const item = Athena.player.inventory.getAt(player, slot);
 
     if (typeof data === 'undefined' || typeof data[propertyName] === 'undefined' || typeof item === 'undefined') return;
-
+    const itemData = Athena.player.inventory.getItemData(player, slot);
+    if (itemData != undefined || itemData != null) {
+        VitalsSystem.adjustVital(player, VITAL_NAMES.FOOD, parseInt(itemData.amount), false);
+    }
     item.quantity = 1;
     Athena.player.inventory.sub(player, item);
 }
@@ -99,7 +104,10 @@ export function drinkEffect(player: alt.Player, slot: number, type: 'inventory' 
     const item = Athena.player.inventory.getAt(player, slot);
 
     if (typeof data === 'undefined' || typeof data[propertyName] === 'undefined' || typeof item === 'undefined') return;
-
+    const itemData = Athena.player.inventory.getItemData(player, slot);
+    if (itemData != undefined || itemData != null) {
+        VitalsSystem.adjustVital(player, VITAL_NAMES.WATER, parseInt(itemData.amount), false);
+    }
     item.quantity = 1;
     Athena.player.inventory.sub(player, item);
 }
@@ -110,7 +118,10 @@ export function drinkEffectAlcoholic(player: alt.Player, slot: number, type: 'in
     const item = Athena.player.inventory.getAt(player, slot);
 
     if (typeof data === 'undefined' || typeof data[propertyName] === 'undefined' || typeof item === 'undefined') return;
-
+    const itemData = Athena.player.inventory.getItemData(player, slot);
+    if (itemData != undefined || itemData != null) {
+        VitalsSystem.adjustVital(player, VITAL_NAMES.WATER, parseInt(itemData.amount), false);
+    }
     item.quantity = 1;
     Athena.player.inventory.sub(player, item);
 
